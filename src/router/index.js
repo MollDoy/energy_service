@@ -9,6 +9,12 @@ const routes = [
     {
         path: "/",
         redirect: "/reports"
+    },
+    {
+        path: "/reportInfo/:reportId",
+        name: "reportInfo",
+        component: () => import("../views/ReportInfo.vue"),
+        props: route => ({...route.params, reportId: parseInt(route.params.id)}),
     }
 ]
 

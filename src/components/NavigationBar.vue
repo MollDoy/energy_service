@@ -1,14 +1,14 @@
 <template>
-    <v-app-bar>
+    <v-app-bar app>
         <v-row justify="center" align="center">
             <router-link to="/">
                 <v-btn> Главная </v-btn>
             </router-link>
-            <router-link to="reports">
+            <router-link to="/reports">
                 <v-btn> Отчёты </v-btn>
             </router-link>
-            <router-link to="/">
-                <v-btn> Графики </v-btn>
+            <router-link to="/reportInfo/1">
+                <v-btn> Информация </v-btn>
             </router-link>
             <router-link to="/">
 
