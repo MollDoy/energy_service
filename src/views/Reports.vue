@@ -10,7 +10,7 @@
 
                 <v-list v-if="filteredReports.length > 0" style="text-align: left">
                     <v-list-item v-for="report in filteredReports">
-                        <router-link to="/"> {{ report.name }} </router-link>
+                        <router-link v-bind:to="{name: 'reportInfo', params: {reportId: report.id}}"> {{ report.name }} </router-link>
                     </v-list-item>
                 </v-list>
 
@@ -20,7 +20,7 @@
             
                 <v-list v-else>
                     <v-list-item v-for="report in reports" style="text-align: left">
-                        <router-link to="/"> {{ report.name }} </router-link>
+                        <router-link v-bind:to="{name: 'reportInfo', params: {reportId: report.id}}"> {{ report.name }} </router-link>
                     </v-list-item>
                 </v-list>
             </v-card-text>
