@@ -71,39 +71,15 @@
 
                     <!-- Первый график -->
                     <v-container v-if="GraphType === 1">
-                        <v-card
-                        class="pa-4"
-                        elevation="1"
-                        rounded="lg"
-                        variant="outlined"
-                        style="border-color: rgba(0, 0, 0, 0.2); min-height: 500px"
-                        >
-                            <v-img :src="graph2" max-height="600px" class="mt-3" cover />
-                        </v-card>
+                        <v-img :src="graph2" max-height="600px" class="mt-3" cover style="border: 1px solid rgba(0, 0, 0, 0.2);" />
                     </v-container>
                     <!-- Второй график -->
                     <v-container v-if="GraphType === 2">
-                        <v-card
-                        class="pa-4"
-                        elevation="1"
-                        rounded="lg"
-                        variant="outlined"
-                        style="border-color: rgba(0, 0, 0, 0.2); min-height: 500px"
-                        >
-                            <v-img :src="graph2" max-height="600px" class="mt-3" cover />
-                        </v-card>
+                        <v-img :src="graph2" max-height="600px" class="mt-3" cover style="border: 1px solid rgba(0, 0, 0, 0.2);" />
                     </v-container>
                     <!-- Третий график -->
                     <v-container v-if="GraphType === 3">
-                        <v-card
-                        class="pa-4"
-                        elevation="1"
-                        rounded="lg"
-                        variant="outlined"
-                        style="border-color: rgba(0, 0, 0, 0.2); min-height: 500px"
-                        >
-                            <v-img :src="graph2" max-height="600px" class="mt-3" cover />
-                        </v-card>
+                        <v-img :src="graph2" max-height="600px" class="mt-3" cover style="border: 1px solid rgba(0, 0, 0, 0.2);" />
                     </v-container>
                 </v-card>
             </v-col>
