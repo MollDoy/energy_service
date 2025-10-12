@@ -1,6 +1,10 @@
 <template>
     <v-container>
-        <v-card variant="outlined" style="min-width: 400px">
+        <v-card 
+        variant="outlined"
+        rounded="lg"
+        elevation="1" 
+        style="min-width: 400px; border-color: rgba(0, 0, 0, 0.2)">
             <v-card-title>
                 Список отчетов
             </v-card-title>

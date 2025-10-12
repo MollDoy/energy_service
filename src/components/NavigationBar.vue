@@ -10,8 +10,8 @@
             <router-link to="/reportInfo/1">
                 <v-btn> Информация </v-btn>
             </router-link>
-            <router-link to="/">
-
+            <router-link to="/table">
+                <v-btn> Таблица </v-btn>
             </router-link>
         </v-row>
     </v-app-bar>

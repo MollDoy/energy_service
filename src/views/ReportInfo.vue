@@ -34,38 +34,52 @@
                     <div class="text-body-2 text-grey-darken-1 mt-1" align="left">Потребление электроэнергии за 2024 год</div>
                     <div class="text-body-2 text-grey-darken-1 mt-6" align="left">Интерактивные графики</div>
                     <v-container class="d-flex">
-                        <v-btn class="flex-grow-1 me-3" color="blue-grey-lighten-5" v-on:click="GraphType = 1"> По месяцам </v-btn>
-                        <v-btn class="flex-grow-1 me-3" color="blue-grey-lighten-5" v-on:click="GraphType = 2"> По дням </v-btn>
-                        <v-btn class="flex-grow-1 me-3" color="blue-grey-lighten-5" v-on:click="GraphType = 3"> По часам </v-btn>
+                        <v-btn class="flex-grow-1 me-3" color="blue-grey-lighten-5" v-on:click="GraphType = 1"> Объём по времени </v-btn>
+                        <v-btn class="flex-grow-1 me-3" color="blue-grey-lighten-5" v-on:click="GraphType = 2"> Цена по времени </v-btn>
+                        <v-btn class="flex-grow-1 me-3" color="blue-grey-lighten-5" v-on:click="GraphType = 3"> Объём и цена по времени </v-btn>
                     </v-container>
+                    <v-container class="d-flex">
+                        <v-text-field
+                        v-model="selectedDate"
+                        label="Отображать с:"
+                        type="date"
+                        class="flex-grow-1 me-3"
+                        ></v-text-field>
+                        <v-text-field
+                        v-model="selectedDate"
+                        label="Отображать до:"
+                        type="date"
+                        class="flex-grow-1 me-3"
+                        ></v-text-field>
+                        <v-menu :location="center" class="flex-grow-1 me-3">
+                            <template v-slot:activator="{ props }">
+                                <v-btn color="blue-grey-lighten-5" v-bind="props" min-height="55px"> {{ selectedRegion }} </v-btn>
+                            </template>
+
+                            <v-list>
+                                <v-list-item
+                                v-for="(region, id) in regions"
+                                :key="id"
+                                :value="id"
+                                v-on:click="selectedRegion = region.value"
+                                >
+                                <v-list-item-title>{{ region.value }}</v-list-item-title>
+                                </v-list-item>
+                            </v-list>
+                        </v-menu>
+                    </v-container>
+
                     <!-- Первый график -->
                     <v-container v-if="GraphType === 1">
-                        <v-row>
-                            <v-col>
-                                <v-card
-                                class="pa-4"
-                                elevation="1"
-                                rounded="lg"
-                                variant="outlined"
-                                style="border-color: rgba(0, 0, 0, 0.2); min-height: 500px"
-                                >
-                                    <div class="text-body-3 font-weight-bold mt-3" align="left">Плановое потребление по месяцам (МВт·ч)</div>
-                                    <v-img :src="graph" class="mt-3" />
-                                </v-card>
-                            </v-col>
-                            <v-col>
-                                <v-card
-                                class="pa-4"
-                                elevation="1"
-                                rounded="lg"
-                                variant="outlined"
-                                style="border-color: rgba(0, 0, 0, 0.2); min-height: 500px"
-                                >
-                                    <div class="text-body-3 font-weight-bold mt-3" align="left">Равновесные цены по месяцам (руб./МВт·ч)</div>
-                                    <v-img :src="graph" class="mt-3" />
-                                </v-card>
-                            </v-col>
-                        </v-row>
+                        <v-card
+                        class="pa-4"
+                        elevation="1"
+                        rounded="lg"
+                        variant="outlined"
+                        style="border-color: rgba(0, 0, 0, 0.2); min-height: 500px"
+                        >
+                            <v-img :src="graph2" max-height="600px" class="mt-3" cover />
+                        </v-card>
                     </v-container>
                     <!-- Второй график -->
                     <v-container v-if="GraphType === 2">
@@ -76,38 +90,20 @@
                         variant="outlined"
                         style="border-color: rgba(0, 0, 0, 0.2); min-height: 500px"
                         >
-                            <div class="text-body-3 font-weight-bold mt-3" align="left">Ежедневная динамика цен (руб./МВт·ч)</div>
-                            <v-img :src="graph2" max-height="620px" class="mt-3" cover />
+                            <v-img :src="graph2" max-height="600px" class="mt-3" cover />
                         </v-card>
                     </v-container>
                     <!-- Третий график -->
                     <v-container v-if="GraphType === 3">
-                        <v-row>
-                            <v-col>
-                                <v-card
-                                class="pa-4"
-                                elevation="1"
-                                rounded="lg"
-                                variant="outlined"
-                                style="border-color: rgba(0, 0, 0, 0.2); min-height: 500px"
-                                >
-                                    <div class="text-body-3 font-weight-bold mt-3" align="left">Почасовое потребление и цены</div>
-                                    <v-img :src="graph" class="mt-3" />
-                                </v-card>
-                            </v-col>
-                            <v-col>
-                                <v-card
-                                class="pa-4"
-                                elevation="1"
-                                rounded="lg"
-                                variant="outlined"
-                                style="border-color: rgba(0, 0, 0, 0.2); min-height: 500px"
-                                >
-                                    <div class="text-body-3 font-weight-bold mt-3" align="left">Почасовые объемы торговли</div>
-                                    <v-img :src="graph" class="mt-3" />
-                                </v-card>
-                            </v-col>
-                        </v-row>
+                        <v-card
+                        class="pa-4"
+                        elevation="1"
+                        rounded="lg"
+                        variant="outlined"
+                        style="border-color: rgba(0, 0, 0, 0.2); min-height: 500px"
+                        >
+                            <v-img :src="graph2" max-height="600px" class="mt-3" cover />
+                        </v-card>
                     </v-container>
                 </v-card>
             </v-col>
@@ -118,8 +114,9 @@
 <script>
 import InfoCard from "../components/InfoCard.vue"
 import reportInfo from "../assets/reportInfo.json"
-import graph from "../assets/graph.jpg"
 import graph2 from "../assets/graph2.jpg"
+import regions from "../assets/regions.json"
+
 export default {
     props: {
         reportId: {type: Number, required: true}
@@ -129,9 +126,14 @@ export default {
         return {
             reportInfo,
             GraphType: 1,
-            graph,
-            graph2
+            selectedDate: undefined,
+            graph2,
+            regions,
+            selectedRegion: undefined,
         }
+    },
+    created() {
+        this.selectedRegion = regions[0].value
     }
 }
 </script>
