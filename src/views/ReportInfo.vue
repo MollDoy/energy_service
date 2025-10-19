@@ -40,13 +40,13 @@
                     </v-container>
                     <v-container class="d-flex">
                         <v-text-field
-                        v-model="selectedDate"
+                        v-model="selectedDateBefore"
                         label="Отображать с:"
                         type="date"
                         class="flex-grow-1 me-3"
                         ></v-text-field>
                         <v-text-field
-                        v-model="selectedDate"
+                        v-model="selectedDateAfter"
                         label="Отображать до:"
                         type="date"
                         class="flex-grow-1 me-3"
@@ -102,7 +102,8 @@ export default {
         return {
             reportInfo,
             GraphType: 1,
-            selectedDate: undefined,
+            selectedDateBefore: undefined,
+            selectedDateAfter: undefined,
             graph2,
             regions,
             selectedRegion: undefined,
