@@ -2,10 +2,10 @@ title: Веб-сервис сбора и анализа статистическ
 description: Документация проекта — визуальная часть, серверная логика, система оповещений и математическая обработка данных.
 base: .
 toc:
-  - name: Визуальная часть (Frontend)
-    href: frontend.md
   - name: Серверная логика (Backend)
     href: backend.md
+  - name: Визуальная часть (Frontend)
+    href: frontend.md
   - name: Система оповещений
     href: notifications.md
   - name: Математическая обработка данных
